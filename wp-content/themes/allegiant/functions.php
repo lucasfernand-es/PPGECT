@@ -27,3 +27,12 @@ require_once($include_path.'setup.php');
 //Include Welcome Screen
 require get_template_directory() . '/core/welcome-screen/welcome-page-setup.php';
 
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page();
+    acf_add_options_sub_page("Página Inicial");
+    acf_add_options_sub_page("Cabeçalho");
+    acf_add_options_sub_page("Rodapé");
+    acf_add_options_sub_page("Display");
+
+}

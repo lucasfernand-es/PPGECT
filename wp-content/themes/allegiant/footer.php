@@ -5,7 +5,7 @@
 			<?php do_action('cpotheme_before_footer'); ?>
 			<footer id="footer" class="footer secondary-color-bg dark">
 				<div class="container">
-                    Bling Bling BITCHES
+                    Bling Bling
 					<?php do_action('cpotheme_footer'); ?>
 				</div>
 			</footer>

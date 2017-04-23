@@ -48,7 +48,8 @@ input[type=submit] { width:auto; -webkit-appearance:none; }
 
 /* MAIN THEME COLORS */
 body .primary-color { color:#89ce40; }
-body .primary-color-bg { background-color:#89ce40; }
+body .primary-color-bg { background-color: #f3f63c; }
+/*body .primary-color-bg { background-color:#89ce40; }*/
 body .secondary-color { color:#444449; }
 body .secondary-color-bg { background-color:#444449; }
 
@@ -336,7 +337,7 @@ POSTS & PAGES
 /* PORTFOLIO SHOWCASE */
 .portfolio { clear:both; padding:50px 0 50px; }
 .portfolio { background:#fff; }
-.portfolio-item { display:block; overflow:hidden; position:relative; text-align:center; padding:1px; margin:0; }
+.portfolio-item { display:block; overflow:hidden; position:relative; text-align:center; padding:5px; margin:0; }
 .portfolio-item-image { display:block; width:100%; overflow:hidden; background:#eee; position:relative; }
 .portfolio-item img { display:block; max-width:100%; margin:0 auto; width:100%; height:auto; line-height:0; -moz-transition:0.5s all; -webkit-transition:0.5s all; transition:0.5s all; }
 .portfolio-item .portfolio-item-overlay { opacity:0; position:absolute; top:0; bottom:0; left:0; right:0; text-align:center; -moz-transition:0.3s all; -webkit-transition:0.3s all; transition:0.3s all; -moz-transition-delay:0.1s; -webkit-transition-delay:0.1s; transition-delay:0.1s; z-index:9997; }
