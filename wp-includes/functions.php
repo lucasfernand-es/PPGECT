@@ -7,8 +7,6 @@
 
 require( ABSPATH . WPINC . '/option.php' );
 
-
-
 /**
  * Convert given date string into a different format.
  *
@@ -2368,7 +2366,8 @@ function wp_get_image_mime( $file ) {
 	 */
 	try {
 		if ( is_callable( 'exif_imagetype' ) ) {
-			$mime = image_type_to_mime_type( exif_imagetype( $file ) );
+			$imagetype = exif_imagetype( $file );
+			$mime = ( $imagetype ) ? image_type_to_mime_type( $imagetype ) : false;
 		} elseif ( function_exists( 'getimagesize' ) ) {
 			$imagesize = getimagesize( $file );
 			$mime = ( isset( $imagesize['mime'] ) ) ? $imagesize['mime'] : false;

@@ -17,14 +17,6 @@ if ( version_compare( $GLOBALS['wp_version'], '4.7-alpha', '<' ) ) {
 	return;
 }
 
-if( function_exists('acf_add_options_page') ) {
-
-    acf_add_options_page();
-    acf_add_options_sub_page('Membro');
-    acf_add_options_sub_page('Test');
-
-}
-
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -448,7 +440,7 @@ function twentyseventeen_scripts() {
 	);
 
 	if ( has_nav_menu( 'top' ) ) {
-		wp_enqueue_script( 'twentyseventeen-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array(), '1.0', true );
+		wp_enqueue_script( 'twentyseventeen-navigation', get_theme_file_uri( '/assets/js/navigation.js' ), array( 'jquery' ), '1.0', true );
 		$twentyseventeen_l10n['expand']         = __( 'Expand child menu', 'twentyseventeen' );
 		$twentyseventeen_l10n['collapse']       = __( 'Collapse child menu', 'twentyseventeen' );
 		$twentyseventeen_l10n['icon']           = twentyseventeen_get_svg( array( 'icon' => 'angle-down', 'fallback' => true ) );
