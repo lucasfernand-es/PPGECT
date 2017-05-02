@@ -36,3 +36,34 @@ if( function_exists('acf_add_options_page') ) {
     acf_add_options_sub_page("Display");
 
 }
+
+
+function wpb_adding_scripts() {
+    // Register the script like this for a theme:
+    wp_register_script( 'unslider', get_template_directory_uri() . '/js/unslider.js', array( 'jquery' ) );
+    wp_enqueue_script('unslider');
+}
+
+add_action( 'wp_enqueue_scripts', 'wpb_adding_scripts' );
+
+
+function wptuts_styles_with_the_lot()
+{
+    // Register the style like this for a theme:
+    wp_register_style( 'unslidercss', get_template_directory_uri() . '/css/unslider.css', array(), null, 'all' );
+
+    // For either a plugin or a theme, you can then enqueue the style:
+    wp_enqueue_style( 'unslidercss' );
+}
+
+add_action( 'wp_enqueue_scripts', 'wptuts_styles_with_the_lot' );
+
+function wptuts_styles()
+{
+    // Register the style like this for a theme:
+    wp_register_style( 'unsliderdots', get_template_directory_uri() . '/css/unslider-dots.css', array(), null, 'all' );
+
+    // For either a plugin or a theme, you can then enqueue the style:
+    wp_enqueue_style( 'unsliderdots' );
+}
+add_action( 'wp_enqueue_scripts', 'wptuts_styles' );

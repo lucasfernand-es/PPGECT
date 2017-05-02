@@ -4,9 +4,9 @@
 if(!function_exists('cpotheme_page_title')){
 	function cpotheme_page_title(){
 		global $post;
-		if(isset($post->ID)) $current_id = $post->ID; else $current_id = false;		
+		if(isset($post->ID)) $current_id = $post->ID; else $current_id = false;
 		$title_tag = function_exists('is_woocommerce') && is_woocommerce() && is_singular('product') ? 'span' : 'h1';
-		
+
 		echo '<'.$title_tag.' class="pagetitle-title heading">';
 		if(function_exists('is_woocommerce') && is_woocommerce()){
 			woocommerce_page_title();
@@ -38,19 +38,19 @@ if(!function_exists('cpotheme_header_image')){
 			return false;
 	}
 }
-	
-	
+
+
 //Add theme-specific body classes
 add_filter('body_class', 'cpotheme_body_class');
 function cpotheme_body_class($body_classes = ''){
 	$current_id = cpotheme_current_id();
 	$classes = '';
-	
+
 	//Sidebar Layout
 	$classes .= ' sidebar-'.cpotheme_get_sidebar_position();
-	
+
 	$body_classes[] = esc_attr($classes);
-	
+
 	return $body_classes;
 }
 
@@ -106,7 +106,7 @@ if(!function_exists('cpotheme_logo')){
 				$output .= '<a class="site-logo" href="'.home_url().'"><img src="'.$logo_url.'" alt="'.get_bloginfo('name').'"'.$logo_width.'/></a>';
 			}
 		}
-		
+
 		$classes = '';
 		if(cpotheme_get_option('general_texttitle') == 0) $classes = ' hidden';
 		if(!is_front_page()){
@@ -114,7 +114,7 @@ if(!function_exists('cpotheme_logo')){
 		}else{
 			$output .= '<h1 class="title site-title '.esc_attr($classes).'"><a href="'.home_url().'">'.get_bloginfo('name').'</a></h1>';
 		}
-		
+
 		$output .= '</div>';
 		echo $output;
 	}
@@ -152,15 +152,15 @@ if(!function_exists('cpotheme_404')){
 
 //Print subfooter sidebars
 if(!function_exists('cpotheme_subfooter')){
-	function cpotheme_subfooter(){		
+	function cpotheme_subfooter(){
 		$footer_columns = 3;
-		for($count = 1; $count <= $footer_columns; $count++){ 
-			if(is_active_sidebar('footer-widgets-'.$count)){ 
+		for($count = 1; $count <= $footer_columns; $count++){
+			if(is_active_sidebar('footer-widgets-'.$count)){
 				$footer_last = $count == $footer_columns ? ' col-last' : '';
 				echo '<div class="column col'.esc_attr($footer_columns.$footer_last).'">';
-				dynamic_sidebar('footer-widgets-'.$count); 
+				dynamic_sidebar('footer-widgets-'.$count);
 				echo '</div>';
-			} 
+			}
 		}
 		echo '<div class="clear"></div>';
 	}
@@ -169,9 +169,9 @@ if(!function_exists('cpotheme_subfooter')){
 
 //Print footer copyright line
 if(!function_exists('cpotheme_footer')){
-	function cpotheme_footer(){		
+	function cpotheme_footer(){
 		echo '<div class="footer-content">';
-		echo '&copy; '.get_bloginfo('name').' '.date("Y").'. '.sprintf(__('<a href="%s">%s</a> theme by CPOThemes.', 'allegiant'), esc_url(CPOTHEME_PREMIUM_URL), esc_attr(CPOTHEME_NAME)); 
+		echo '&copy; '.get_bloginfo('name').' '.date("Y").'. '.sprintf(__('<a href="%s">%s</a> theme by CPOThemes.', 'allegiant'), esc_url(CPOTHEME_PREMIUM_URL), esc_attr(CPOTHEME_NAME));
 		echo '</div>';
 	}
 }
@@ -179,7 +179,7 @@ if(!function_exists('cpotheme_footer')){
 
 //Print submenu navigation
 if(!function_exists('cpotheme_submenu')){
-	function cpotheme_submenu(){		
+	function cpotheme_submenu(){
 		$ancestors = array_reverse(get_post_ancestors(get_the_ID()));
 		if(empty($ancestors[0]) || $ancestors[0] == 0) $ancestors[0] = get_the_ID();
 		echo '<ul id="submenu" class="menu-sub">';
@@ -191,13 +191,13 @@ if(!function_exists('cpotheme_submenu')){
 
 //Print submenu navigation
 if(!function_exists('cpotheme_sitemap')){
-	function cpotheme_sitemap(){		
+	function cpotheme_sitemap(){
 		//Print page list
 		echo '<div class="column col2">';
 		echo '<h3>'.__('Pages', 'allegiant').'</h3>';
 		echo '<ul>'.wp_list_pages('sort_column=menu_order&title_li=&echo=0').'</ul>';
 		echo '</div>';
-		
+
 		//Print post categories and tag cloud
 		echo '<div class="column col2 col-last">';
 		echo '<h3>'.__('Post Categories', 'allegiant').'</h3>';
@@ -205,7 +205,7 @@ if(!function_exists('cpotheme_sitemap')){
 		echo '<h3>'.__('Post Tags', 'allegiant').'</h3>';
 		echo '<ul>'.wp_tag_cloud('echo=0').'</ul>';
 		echo '</div>';
-		
+
 		echo '<div class="clear"></div>';
 	}
 }
@@ -250,10 +250,10 @@ if(!function_exists('cpotheme_grid_default')){
 	function cpotheme_grid_default($element, $template, $columns = 3, $args = null){
 		$class = isset($args['class']) ? $args['class'] : '';
 		if($columns == '') $columns = 3;
-		
+
 		echo '<div class="row">';
 		$count = 0;
-		while(have_posts()){ 
+		while(have_posts()){
 			the_post();
 			if($count % $columns == 0 && $count > 0){
 				echo '</div>';
@@ -276,10 +276,10 @@ if(!function_exists('cpotheme_grid_custom')){
 		global $post;
 		$class = isset($args['class']) ? $args['class'] : '';
 		if($columns == '') $columns = 3;
-		
+
 		echo '<div class="row">';
 		$count = 0;
-		foreach($posts as $post){ 
+		foreach($posts as $post){
 			setup_postdata($post);
 			if($count % $columns == 0 && $count > 0){
 				echo '</div>';
@@ -305,17 +305,17 @@ if(!function_exists('cpotheme_breadcrumb')){
 				woocommerce_breadcrumb();
 				return;
 			}
-			
+
 			$result = '';
 			if(function_exists('yoast_breadcrumb')){
 				$result = yoast_breadcrumb('','', false);
 			}
-			
+
 			if($result == ''){
 				global $post;
 				if(is_object($post)) $pid = $post->ID; else $pid = '';
 				$result = '';
-				
+
 				if($pid != ''){
 					$result = "<span class='breadcrumb-separator'></span>";
 					//Add post hierarchy
@@ -327,16 +327,16 @@ if(!function_exists('cpotheme_breadcrumb')){
 							$post_data = get_post($post_data->post_parent);
 							$result = "<span class='breadcrumb-separator'></span><a class='breadcrumb-link' href='".get_permalink($post_data->ID)."'>".apply_filters('the_title', $post_data->post_title)."</a>\n".$result;
 						endwhile;
-						
+
 					elseif(is_tax()):
 						$result .= single_tag_title('', false);
-						
+
 					elseif(is_author()):
 						$author = get_userdata(get_query_var('author'));
 						$result .= $author->display_name;
-						
+
 					//Prefix with a taxonomy if possible
-					elseif(is_category()):					
+					elseif(is_category()):
 						$post_data = get_the_category($pid);
 						if(isset($post_data[0])):
 							$data = get_category_parents($post_data[0]->cat_ID, TRUE, ' &raquo; ');
@@ -344,8 +344,8 @@ if(!function_exists('cpotheme_breadcrumb')){
 								$result .= substr($data, 0, -8);
 							endif;
 						endif;
-						
-					elseif(is_search()):					
+
+					elseif(is_search()):
 						$result .= __('Search Results', 'allegiant');
 					else:
 						if(isset($post->ID)) $current_id = $post->ID; else $current_id = false;
@@ -359,7 +359,7 @@ if(!function_exists('cpotheme_breadcrumb')){
 				}
 				$result = '<a class="breadcrumb-link" href="'.home_url().'">'.__('Home', 'allegiant').'</a>'.$result;
 			}
-			
+
 			$output = '<div id="breadcrumb" class="breadcrumb">'.$result.'</div>';
 			echo $output;
 		}
@@ -373,16 +373,16 @@ if(!function_exists('cpotheme_search_form')){
 	function cpotheme_search_form(){
 		if(is_search()){
 			$search_query = '';
-			if(isset($_GET['s'])) 
+			if(isset($_GET['s']))
 				$search_query = esc_attr($_GET['s']);
-			
+
 			echo '<div class="search-form">';
 			echo '<form role="search" method="get" id="search-form" class="search-form" action="'.home_url('/').'">';
 			echo '<input type="text" value="'.$search_query.'" name="s" id="s" />';
 			echo '<input type="submit" id="search-submit" value="'.__('Search', 'allegiant').'" />';
 			echo '</form>';
 			echo '</div>';
-			
+
 			if(!have_posts()){
 				echo '<p class="search-submit">'.__('No results were found. Please try searching with different terms.', 'allegiant').'</p>';
 			}
@@ -425,9 +425,9 @@ if(!function_exists('cpotheme_postpage_title')){
 if(!function_exists('cpotheme_postpage_content')){
 	function cpotheme_postpage_content(){
 		if(cpotheme_get_option('postpage_preview') === true || is_singular('post')){
-			the_content(); 
+			the_content();
 			cpotheme_post_pagination();
-		}else{ 
+		}else{
 			the_excerpt();
 		}
 	}
@@ -448,7 +448,7 @@ if(!function_exists('cpotheme_postpage_date')){
 	}
 }
 
-	
+
 //Displays the author link
 if(!function_exists('cpotheme_postpage_author')){
 	function cpotheme_postpage_author($display = false, $format_text =''){
@@ -478,7 +478,7 @@ if(!function_exists('cpotheme_postpage_categories')){
 if(!function_exists('cpotheme_postpage_comments')){
 	function cpotheme_postpage_comments($display = false, $format_text = ''){
 		$comments_num = get_comments_number();
-		
+
 		//Format comment texts
 		if($format_text != ''){
 			$text = $format_text;
@@ -490,9 +490,9 @@ if(!function_exists('cpotheme_postpage_comments')){
 			else
 				$text = __('%1$s Comments', 'allegiant');
 		}
-		
+
 		$comments = sprintf($text, number_format_i18n($comments_num));
-		echo '<div class="post-comments">'.sprintf('<a href="%1$s">%2$s</a>', get_permalink(get_the_ID()).'#comments', $comments).'</div>';	
+		echo '<div class="post-comments">'.sprintf('<a href="%1$s">%2$s</a>', get_permalink(get_the_ID()).'#comments', $comments).'</div>';
 	}
 }
 
@@ -538,16 +538,16 @@ if(!function_exists('cpotheme_author')){
 				echo '</div>';
 				//Social links
 				echo '<div class="author-social">';
-				$user_meta = get_the_author_meta('user_url'); 
+				$user_meta = get_the_author_meta('user_url');
 				if($user_meta != '')
 					echo '<a target="_blank" rel="nofollow" class="author-web" href="'.esc_attr($user_meta).'">'.__('Website', 'allegiant').'</a>';
-				$user_meta = get_the_author_meta('facebook'); 
+				$user_meta = get_the_author_meta('facebook');
 				if($user_meta != '')
 					echo '<a target="_blank" rel="nofollow" class="author-facebook" href="'.esc_attr($user_meta).'">'.__('Facebook', 'allegiant').'</a>';
-				$user_meta = get_the_author_meta('twitter'); 
+				$user_meta = get_the_author_meta('twitter');
 				if($user_meta != '')
 					echo '<a target="_blank" rel="nofollow" class="author-twitter" href="//twitter.com/'.esc_attr($user_meta).'">'.__('Twitter', 'allegiant').'</a>';
-				$user_meta = get_the_author_meta('googleplus'); 
+				$user_meta = get_the_author_meta('googleplus');
 				if($user_meta != '')
 					echo '<a target="_blank" rel="nofollow" class="author-googleplus" href="'.esc_attr($user_meta).'">'.__('Google+', 'allegiant').'</a>';
 				do_action('cpotheme_author_links');
@@ -587,7 +587,7 @@ if(!function_exists('cpotheme_pagination')){
 		$start_page = $current_page - $half_page_start;
 
 		$end_page = $current_page + $half_page_end;
-		
+
 		if(($end_page - $start_page) != $pages_to_show_minus_1)
 			$end_page = $start_page + $pages_to_show_minus_1;
 
@@ -614,13 +614,13 @@ if(!function_exists('cpotheme_pagination')){
 			else
 				$out .= '<a class="pagination-page page" href="'.esc_url(get_pagenum_link($i)).'">'.$i.'</a>';
 		}
-		
+
 		//Last Page Link
 		if($total_pages == $current_page)
 			$out .= '<span class="last_page">'.__('Last', 'allegiant').'</span>';
 		else
 			$out .= '<a class="pagination-page page last_page" href="'.esc_url(get_pagenum_link($total_pages)).'">'.__('Last', 'allegiant').'</a>';
-		
+
 		$out = '<div id="pagination" class="pagination">'.$out.'</div>';
 
 		echo $out;
@@ -688,8 +688,8 @@ if(!function_exists('cpotheme_mobile_menu')){
 //Prints the main navigation menu
 if(!function_exists('cpotheme_menu_toggle')){
 	function cpotheme_menu_toggle(){
-		if(has_nav_menu('main_menu'))
-			echo '<div id="menu-mobile-open" class=" menu-mobile-open menu-mobile-toggle"></div>';
+		/*if(has_nav_menu('main_menu'))
+			echo '<div id="menu-mobile-open" class=" menu-mobile-open menu-mobile-toggle"></div>';*/
 	}
 }
 
@@ -723,7 +723,7 @@ if(!function_exists('cpotheme_secondary_menu')){
 	function cpotheme_secondary_menu($taxonomy = 'cpo_portfolio_category', $class){
 		if(taxonomy_exists($taxonomy)){
 			$feature_posts = get_terms($taxonomy, 'order=ASC&orderby=name');
-			if(sizeof($feature_posts) > 0){ 
+			if(sizeof($feature_posts) > 0){
 				$current_id = cpotheme_current_id();
 				echo '<div id="menu-secondary '.$class.'" class="menu-secondary '.$class.'">';
 				foreach($feature_posts as $current_item){
@@ -746,7 +746,7 @@ if(!function_exists('cpotheme_default_menu')){
 	function cpotheme_default_menu(){
 		$args = array('sort_column' => 'menu_order, post_title');
 		$pages = get_pages($args);
-		
+
 		if($pages){
 			$count = 0;
 			$output = '';
@@ -760,7 +760,7 @@ if(!function_exists('cpotheme_default_menu')){
 					$output .= '<span class="menu-title">'.$current_page->post_title.'</span>';
 					$output .= '</span>';
 					$output .= '</a>';
-					$output .= '</li>';	
+					$output .= '</li>';
 				}
 			}
 			$output .= '</ul>';
@@ -788,9 +788,9 @@ if(!function_exists('cpotheme_comments_protected')){
 if(!function_exists('cpotheme_comments_title')){
 	function cpotheme_comments_title(){
 		echo '<h3 id="comments-title" class="comments-title">';
-		if(get_comments_number() == 1) 
+		if(get_comments_number() == 1)
 			_e('One comment', 'allegiant');
-		else 
+		else
 			printf(__('%s comments', 'allegiant'), number_format_i18n(get_comments_number()));
 		echo '</h3>';
 	}
@@ -801,7 +801,7 @@ if(!function_exists('cpotheme_comments_title')){
 if(!function_exists('cpotheme_comment')){
 	function cpotheme_comment($comment, $args, $depth){
 		$GLOBALS['comment'] = $comment;
-		
+
 		//Normal Comments
 		switch($comment->comment_type): case '': ?>
 		<li <?php comment_class('comment'); ?> id="comment-<?php comment_ID(); ?>">
@@ -823,8 +823,8 @@ if(!function_exists('cpotheme_comment')){
 						</a>
 					</div>
 				</div>
-				
-				<div class="comment-content">    
+
+				<div class="comment-content">
 					<?php if($comment->comment_approved == '0'): ?>
 						<span class="comment-approval"><?php _e('Your comment is awaiting approval.', 'allegiant'); ?></span>
 					<?php endif; ?>
@@ -833,7 +833,7 @@ if(!function_exists('cpotheme_comment')){
 				</div>
 			</div>
 		<?php break;
-		
+
 		//Pingbacks & Trackbacks
 		case 'pingback': case 'trackback': ?>
 		<li class="pingback">

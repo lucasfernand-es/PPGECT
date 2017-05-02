@@ -4,6 +4,7 @@
 
 <div id="main" class="main">
 	<div class="container">
+        Conteudo
 		<section id="content" class="content">
 			<?php do_action('cpotheme_before_content'); ?>
 			<?php if(have_posts()) while(have_posts()): the_post(); ?>
@@ -18,6 +19,7 @@
 			<?php do_action('cpotheme_after_content'); ?>
 		</section>
 		<?php get_sidebar(); ?>
+        sidebar
 		<div class="clear"></div>
 	</div>
 </div>

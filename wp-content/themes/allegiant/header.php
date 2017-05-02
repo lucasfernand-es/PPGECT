@@ -2,6 +2,19 @@
 <html <?php language_attributes(); ?>>
 <head>
     <?php wp_head(); ?>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/ppgect/wp-content/themes/allegiant/js/unslider.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.feature-images').unslider({
+                autoplay: true,
+                arrows: false,
+            });
+        });
+    </script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -17,6 +30,9 @@
 			<header id="header" class="header">
 				<div class="container">
 					<?php do_action('cpotheme_header'); ?>
+
+
+
 					<div class='clear'></div>
 				</div>
 			</header>
