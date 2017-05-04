@@ -10,58 +10,36 @@
 
                         <div class="column col3 ">
                             <div class="subfooter-column">
-                                <div id="text-2" class="widget widget_text">
-
-                                    <div class="textwidget">
-                                        <p>
-                                            <span class="ctsc-leading">
-                                                Allegiant is a business WordPress theme geared towards online businesses and agencies.
-                                            </span>
-                                        </p>
-                                        <p>This theme is focused towards providing a complete showcase of your portfolio, sporting a full-page design that will surely wow your visitors.</p>
-                                    </div>
+                                <div class="subfooter-column">
+                                    <?php the_field('left_column', 'option'); ?>
                                 </div>
                             </div>
                         </div>
 
                         <div class="column col3 ">
                             <div class="subfooter-column">
-                                <div class="widget">
-                                    <div class="widget-title heading">Flickr Images</div>
-                                    <div class="widget-content">
-                                            Content
-                                    </div>
-                                </div>
+                                <?php the_field('middle_column', 'option'); ?>
                             </div>
                         </div>
 
                         <div class="column col3 ">
                             <div class="subfooter-column">
-                                <div id="recent-posts-3" class="widget widget_recent_entries">		<div class="widget-title heading">Recent Posts</div>		<ul>
-                                        <li>
-                                            <a href="http://demos.cpothemes.com/allegiant/post-with-gallery-format/">Donec Vehicula Cursus Ante</a>
-                                            <span class="post-date">February 25, 2013</span>
-                                        </li>
-                                        <li>
-                                            <a href="http://demos.cpothemes.com/allegiant/post-featured-image/">Post with Image Preview</a>
-                                            <span class="post-date">February 18, 2013</span>
-                                        </li>
-                                        <li>
-                                            <a href="http://demos.cpothemes.com/allegiant/post-comments/">Post with User Comments</a>
-                                            <span class="post-date">February 8, 2013</span>
-                                        </li>
-                                    </ul>
-                                </div>		</div></div></div><div class="clear"></div>	</div>
+                                <?php the_field('right_column', 'option'); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>	</div>
             </section>
             <footer id="footer" class="footer secondary-color-bg dark">
                 <div class="container">
                     <div id="footermenu" class="footermenu">
                         <div class="menu-footer-container">
+
+                            <?php //do_action('cpotheme_footer'); ?>
                             <ul id="menu-footer" class="menu-footer">
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-normal"><a href=""><span class="menu-link"><span class="menu-title">Blog</span></span></a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-normal"><a href="research_group"><span class="menu-link"><span class="menu-title"><?php the_field('display_grupos_pesq', 'option'); ?></span></span></a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-normal"><a href="production"><span class="menu-link"><span class="menu-title"><?php the_field('display_producoes', 'option'); ?></span></span></a></li>
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-normal"><a href=""><span class="menu-link"><span class="menu-title"><?php the_field('display_contato', 'option'); ?></span></span></a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-normal"><a href="<?php echo get_bloginfo('url'); ?>"><span class="menu-link"><span class="menu-title"><?php the_field('display_home', 'option'); ?></span></span></a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-normal"><a href="<?php echo get_bloginfo('url'); ?>/#research-group"><span class="menu-link"><span class="menu-title"><?php the_field('display_grupos_pesq', 'option'); ?></span></span></a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-normal"><a href="<?php echo get_page_link( get_page_by_title( 'contato' )->ID ); ?>"><span class="menu-link"><span class="menu-title"><?php the_field('display_contato', 'option'); ?></span></span></a></li>
                             </ul>
                         </div>
                     </div>

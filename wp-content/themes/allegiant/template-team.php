@@ -7,7 +7,7 @@
 	<div class="container">
 		<section id="content" class="content">
 			<?php do_action('cpotheme_before_content'); ?>
-			
+			oi
 			<?php if(have_posts()) while(have_posts()): the_post(); ?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<div class="page-content">
@@ -15,6 +15,7 @@
 				</div>
 			</div>
 			<?php endwhile; ?>
+            oi
 			
 			<?php $query = new WP_Query('post_type=cpo_team&posts_per_page=-1&order=ASC&orderby=menu_order'); ?>
 			<?php if($query->posts): $feature_count = 0; ?>

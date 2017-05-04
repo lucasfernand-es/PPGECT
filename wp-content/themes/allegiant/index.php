@@ -5,59 +5,24 @@
 <?php if(cpotheme_show_posts()): ?>
 
 
-    <div class="section slider">
-        <div class="slider-slides feature-images">
-            <?php if( have_rows('slides', 'options') ): ?>
-                <ul>
-                    <?php while( have_rows('slides', 'options') ): the_row();
-
-                        // vars
-                        $imagem_destaque = get_sub_field('imagem_destaque');
-                        $titulo = get_sub_field('titulo');
-                        $conteudo = get_sub_field('conteudo');
-                        $link = get_sub_field('link');
-
-                        ?>
-
-                        <li>
-                            <a href="<?php echo $link;?>" target="_blank">
-                                <div class="slide slide-center light" style="background-image: url(&quot; <?php echo $imagem_destaque['url']; ?> &quot;); ">
-                                    <div class="slide-container">
-                                        <div class="container">
-                                            <div class="slide-caption">
-                                                <div class="slide-titlebox">
-                                                    <h2 class="slide-title">
-                                                        <?php echo $titulo;?>
-                                                    </h2>
-                                                </div>
-                                                <div class="slide-content">
-                                                    <?php echo $conteudo ;?>
-                                                </div>
-                                                <!--<a class="slide-link button button-medium" href="http://www.cpothemes.com/theme/allegiant">
-                                                    Get This Theme
-                                                </a> -->
-                                            </div>
-                                            <div class="slide-image">
-                                            </div>
-                                            <!--div class="slide-image">
-                                                <img src="http://allegient-3a0d.kxcdn.com/wp-content/uploads/sites/32/2015/06/allegiant-tablet.png">
-                                            </div-->
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </a>
-                        </li>
-                    <?php endwhile; ?>
-                </ul>
-            <?php endif; ?>
+    <div class="slider-slides main feature-images">
+        <div class="slide slide-center light" style="background-image: url(&quot;<?php echo get_field('banner', 'option')['url']; ?>&quot;);">
+            <div class="slide-body">
+                <div class="container">
+                    <div class="slide-caption">
+                        <h2 class="slide-title"></h2>
+                        <div class="slide-content" style="visibility: hidden;">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 
     <div id="main" class="main">
 
+        <?php echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=[AIzaSyDngp_jP8nhYJlXggT7WKsY-YtuxFa2MQ4]"></script>'; ?>
 
         <div class="container">
             <div class="section-heading features-heading">
@@ -80,101 +45,36 @@
         <div class="clear"></div>
     </div>
 
-    <div id="team" class="section team">
-        <div class="container">
-
-            <div class="section-heading rg-heading">
+    <div id="research-group" class="section team">
+        <div class="container rg-heading">
+            <div class="section-heading">
                 <div class="section-title team-title">
-                    <?php the_field('display_grupos_pesq', 'option'); ?>
+                    <?php the_field('displayResearchGroup', 'option'); ?>
                 </div>
             </div>
 
-            <?php
 
+            <?php
             $posts = get_posts(array(
-                'posts_per_page'	=> -1,
-                'post_type'			=> 'research_group',
-                'orderby' => 'abreviacao',
+                'posts_per_page'  => -1,
+                'post_type'      => 'research_group',
                 'order' => 'ASC'
             ));
-
+            // 'orderby' => 'abreviacao',
             if( $posts ): ?>
-
-
-
+                <?php cpotheme_grid($posts, 'element', 'research-group-item', 3, array('class' => 'column-fit')); ?>
+                <?php wp_reset_postdata(); ?>
                 <?php
-
-                    $i = 0; $open_div = false;
-                    foreach( $posts as $post ):
-                    setup_postdata( $post );
-                    ?>
-
-                <?php
-                    if($i % 3 == 0) {
-                        $open_div = true;
-                        echo "<div class=\"row\">";
-                    } ?>
-
-
-                <div class="column column-fit col3">
-
-                    <div class="portfolio-item dark  portfolio-item-has-excerpt">
-
-                        <a class="portfolio-item-image" href="<?php the_permalink(); ?>">
-
-                            <div class="portfolio-item-overlay primary-color-bg"></div>
-
-                            <h3 class="portfolio-item-title">
-                                <?php echo get_field("abreviacao"); ?>
-                            </h3>
-
-                            <div class="portfolio-item-description">
-                                <p>  <?php echo get_field("breve_descricao")?> </p>
-                            </div>
-
-                            <img
-                                 src="<?php
-                                    if(get_field('imagem') == "")
-                                        echo get_field('imagem_padrao_gp', 'option')['url'];
-                                    else
-                                        echo get_field('imagem')['url'];
-                                 ?>"
-                                 class="attachment-portfolio size-portfolio wp-post-image group-image"
-                                 style="height: 250px;"
-                                 alt=""
-                                 title="">
-                        </a>
-                    </div>
-
-                    <?php
-                        if((($i + 1) % 3) == 0) {
-                            $open_div = false;
-                            echo "</div>";
-                        }
-                    ?>
-                </div>
-
-                <?php
-                        $i++;
-                        endforeach;
-                        if($open_div)
-                            echo "</div>";
+            else:
                 ?>
 
-                <?php wp_reset_postdata(); ?>
-
-            <?php
-            else:
-            ?>
-
-            <div class="row">
-                <div class="column column-fit col1 no-result">
-                    <h2 class="">
-                        <?php the_field('display_no_gp', 'option'); ?>
-                    </h2>
+                <div class="row">
+                    <div class="column column-fit col1 no-result">
+                        <h2 class="">
+                            <?php the_field('display_no_gp', 'option'); ?>
+                        </h2>
+                    </div>
                 </div>
-            </div>
-
             <?php endif; ?>
         </div>
     </div>
@@ -182,7 +82,8 @@
 
 <?php endif; ?>
 
-<div id="main" class="main">
+<?php
+/* <div id="main" class="main">
 
 
     <div class="row">
@@ -269,14 +170,15 @@
         <div class="column column-fit col2">
             <div class="section-heading features-heading">
                 <div class="section-title features-title heading">
-                    Últimos ...
+                    Últimos Eventos?
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-
+ */
+?>
 
 
 <?php get_footer(); ?>

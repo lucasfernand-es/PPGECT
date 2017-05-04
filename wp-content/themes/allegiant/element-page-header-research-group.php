@@ -7,9 +7,15 @@
 <?php do_action('cpotheme_before_title'); ?>
 <section id="pagetitle" class="pagetitle dark" <?php echo $header_image; ?>>
 	<div class="container">
-		<?php do_action('cpotheme_title'); ?>
+        <h1>
+            <?php echo get_field('nome'); ?>
+        </h1>
 	</div>
+    <div class="row">
+
+        Professor responsável: <?php echo get_field('head_researcher'); ?>
+    </div>
 </section>
-<?php do_action('cpotheme_after_title'); ?>
+
 
 <?php endif; ?>
