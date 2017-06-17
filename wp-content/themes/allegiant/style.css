@@ -29,6 +29,7 @@ h4 { font-size:1.3em; }
 h5 { font-size:1.2em; } 
 h6 { font-size:1.1em; }
 
+
 /* HYPERLINKS */
 a:link, a:visited { color:#2a88bf; text-decoration:none; }
 a:hover { color:#39c; text-decoration:underline; }
@@ -51,6 +52,8 @@ body .primary-color-bg { background-color: #f3f63c; }
 /*body .primary-color-bg { background-color:#89ce40; }*/
 body .secondary-color { color:#444449; }
 body .secondary-color-bg { background-color:#444449; }
+
+
 
 /* SHORTCODE CUSTOM STYLING */
 html body .button, 
@@ -134,6 +137,8 @@ LAYOUT
 .section-heading:before { content:' '; position:absolute; background:#bbb; bottom:0; left:50%; margin-left:-50px; width:100px; height:1px; }
 
 
+.section-heading-no-line { position:relative; margin:0; padding:30px 0px; text-align:center; line-height:1.2; font-size:2.5em; text-transform:uppercase;  border-top:1px solid #eee; border-bottom:1px solid #eee; margin-top: 20px;}
+
 /* HOMEPAGE FEATURES */
 .features { margin:0; background:#fff; padding:50px 0 10px; }
 .features .feature { margin:0 0 40px; text-align:center; }
@@ -170,6 +175,7 @@ LAYOUT
 
 /* HOMEPAGE CLIENTS */
 .clients { display:block; border-top:1px solid #eee; background:#fff; position:relative; overflow:hidden; margin:0; padding:40px 0 0; }
+
 .clients .client { margin:0 0 40px; }
 .clients .client img { display:block; margin:0; width:100%; }
 
@@ -233,7 +239,7 @@ NAVIGATION
 
 
 /* FOOTER MENU */
-.footermenu {  }
+.footermenu { text-align:center; }
 .menu-footer { text-align:center; }
 .menu-footer li a { font-weight:bold; }
 .menu-footer li ul li a { font-weight:normal; font-size:0.9em; }
@@ -510,4 +516,32 @@ Custom
 
 .wpforms-submit-container{
 	text-align: center;
+}
+
+.footer-copyright {
+	text-align: center;
+}
+
+.sponsor {
+	padding: 20px 10px;
+	text-align: center;
+}
+
+.sponsors { border-top:1px solid #eee;  margin-bottom: 20px;}
+
+.group-content {
+	background-color: #e0e336;
+	width: 80%;
+}
+
+.group-menu {
+	background-color: #ee92c5;
+	width: 20%;
+}
+
+
+.group-column { display:block; float:left; }
+
+.heading {
+	margin-top: 20px;
 }

@@ -1331,7 +1331,7 @@ th.action-links {
 	}
 }
 
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1000px) {
 	.filter-items {
 		float: none;
 	}

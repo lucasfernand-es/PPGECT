@@ -1,0 +1,73 @@
+
+                        <?php if( $members ): ?>
+                            <?php
+
+                            $productions_meta_query = array(
+                                'post_type' => 'production',
+                                'meta_query' => array(
+                                    'relation' => 'OR'
+                                )
+                            );
+
+                            foreach($members as $member) {
+                                $id=$member->ID;
+
+                                array_push($productions_meta_query['meta_query'], array(
+                                    'key' => 'autor',
+                                    'value' => '"' . $id . '"',
+                                    'compare' => 'LIKE'
+                                ));
+                            }
+
+                            $productions = get_posts($productions_meta_query);
+
+
+                            ?>
+                        <?php endif; ?>
+
+                        <?php if( $productions ): ?>
+                            <?php foreach( $productions as $production ): ?>
+
+                                <div class="row column  col1">
+                                    <a href="<?php echo get_permalink($production->ID)?>">
+                                        <h2>
+                                            <?php echo get_field('titulo', $production->ID);?>
+                                        </h2>
+                                    </a>
+
+                                </div>
+
+                                <div class="row column  col1">
+                                    <div class="row">
+                                        <div class="column col2">
+                                            <h3>
+                                                Autor(es):
+                                            </h3>
+                                            <ul>
+                                                <?php foreach(get_field('autor', $production->ID) as $item ): ?>
+                                                    <li>
+                                                        <?php echo get_field('nome_completo', $item->ID); ?>
+                                                    </li>
+
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <div class="column col2">
+                                            <h3>
+                                                Orientador(es):
+                                            </h3>
+                                            <ul>
+                                                <?php foreach(get_field('orientador', $production->ID) as $item ): ?>
+                                                    <li>
+                                                        <?php echo get_field('nome_completo', $item->ID); ?>
+                                                    </li>
+
+                                                <?php endforeach; ?>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            <?php endforeach; ?>
+                        <?php endif; ?>

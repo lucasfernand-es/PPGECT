@@ -1,8 +1,8 @@
 === Contact Form by WPForms - Drag & Drop Form Builder for WordPress ===
 Contributors: wpforms, jaredatch, smub
-Tags: contact form, contact form plugin, contact button, contact me, custom form, custom contact form, form builder, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form
+Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form
 Requires at least: 4.5
-Tested up to: 4.7.4
+Tested up to: 4.8
 Stable tag: trunk
 License: GNU General Public License v2.0 or later
 
@@ -44,7 +44,7 @@ Building contact forms in WordPress can be time consuming. Why?
 
 Because every other WordPress contact form builder plugin requires you to build your contact form from scratch. The truth is it's often not necessary to create a contact form completely from scratch unless you really want to.
 
-Whether you’re looking to create a simple contact form, request a quote form, donation form, payment order form, or a subscription form, we have a form template for you inside our contact form builder.
+Whether youÃ¢â‚¬â„¢re looking to create a simple contact form, request a quote form, donation form, payment order form, or a subscription form, we have a form template for you inside our contact form builder.
 
 WPForms comes with <a href="https://wpforms.com/features/form-templates/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">pre-built form templates</a> to help you save time. You can add, remove, or re-arrange fields as necessary.
 
@@ -209,6 +209,16 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.3.8 =
+- Changed: Available conditional logic rules/functionality with Providers have been updated
+- Changed: Updated form builder modals (jquery-confirm.js)
+- Changed: Many Form Builder performance enhancements
+- Fixed: Number field validation message not saving
+- Fixed: Email confirmation setting not displaying correctly with Small field size
+
+= 1.3.7.4 =
+- Added: Marketing tab in the form builder shows all possible providers.
+
 = 1.3.7.3 =
 - Fixed: Required setting checkbox getting out of sync when duplicating fields
 - Fixed: CSS class name typo in the form builder layout selector
@@ -226,7 +236,7 @@ Syed Balkhi
 - Added: Google Invisible reCAPTCHA support
 - Added: Custom field validation messages (see WPForms Settings page)
 - Added: Bulk add choices for Checkbox, Multiple Choice, and Dropdown fields
-- Addded: Filter to allow email notifications to include empty fields, `wpforms_email_display_empty_fields`
+- Added: Filter to allow email notifications to include empty fields, `wpforms_email_display_empty_fields`
 - Added: Field CSS layout selector
 - Changed: Leverage `wp_json_encode` instead of native PHP function
 - Changed: Various WordPress coding standard improvements (work in progress)

@@ -821,7 +821,7 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 	}
 }
 /* Maximum screenshot width reaches 440px */
-@media only screen and (max-width: 1366px) {
+@media only screen and (max-width: 1120px) {
 	.theme-browser .theme {
 		width: 47.5%;
 		margin-right: 0;

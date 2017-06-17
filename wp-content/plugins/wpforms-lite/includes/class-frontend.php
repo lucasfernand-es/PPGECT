@@ -419,7 +419,9 @@ class WPForms_Frontend {
 		$field_id   = absint( $field['id'] );
 		$properties = array(
 			'container' => array(
-				'attr'  => array(),
+				'attr'  => array(
+					'style' => $attributes['field_style'],
+				),
 				'class' => $attributes['field_class'],
 				'data'  => array(),
 				'id'    => implode( '', array_slice( $attributes['field_id'], 0 ) ),

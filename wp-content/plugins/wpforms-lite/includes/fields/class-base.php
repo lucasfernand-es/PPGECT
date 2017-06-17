@@ -190,7 +190,10 @@ abstract class WPForms_Field {
 
 		if ( ! empty( $args['data'] ) ) {
 			foreach ( $args['data'] as $key => $val ) {
-				$data .= ' data-' . $key . '="' . $val . '"';
+				if ( is_array( $val ) ) {
+					$val = wp_json_encode( $val );
+				}
+				$data .= ' data-' . $key . '=\'' . $val . '\'';
 			}
 		}
 
@@ -491,6 +494,7 @@ abstract class WPForms_Field {
 
 			case 'size':
 				$value   = ! empty( $field['size'] ) ? esc_attr( $field['size'] ) : 'medium';
+				$class   = ! empty( $args['class'] ) ? esc_html( $args['class'] ) : '';
 				$tooltip = __( 'Select the default form field size.', 'wpforms' );
 				$options = array(
 					'small'  => __( 'Small', 'wpforms' ),
@@ -499,7 +503,7 @@ abstract class WPForms_Field {
 				);
 				$output  = $this->field_element( 'label',  $field, array( 'slug' => 'size', 'value' => __( 'Field Size', 'wpforms' ), 'tooltip' => $tooltip ), false );
 				$output .= $this->field_element( 'select', $field, array( 'slug' => 'size', 'value' => $value, 'options' => $options ), false );
-				$output  = $this->field_element( 'row',    $field, array( 'slug' => 'size', 'content' => $output ), false );
+				$output  = $this->field_element( 'row',    $field, array( 'slug' => 'size', 'content' => $output, 'class' => $class ), false );
 				break;
 
 			// Advanced Options markup ---------------------------------------//

@@ -2,11 +2,11 @@
 <html <?php language_attributes(); ?>>
 <head>
     <?php wp_head(); ?>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"-->
 
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"-->
     <style type="text/css">
 
         .acf-map {
@@ -22,8 +22,9 @@
         }
 
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDngp_jP8nhYJlXggT7WKsY-YtuxFa2MQ4"></script>
+    <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDngp_jP8nhYJlXggT7WKsY-YtuxFa2MQ4"></script-->
     <script type="text/javascript">
+
         (function($) {
 
             /*
@@ -38,7 +39,7 @@
              *  @param	$el (jQuery element)
              *  @return	n/a
              */
-
+            /*
             function new_map( $el ) {
 
                 // var
@@ -91,7 +92,7 @@
              *  @param	map (Google Map object)
              *  @return	n/a
              */
-
+/*
             function add_marker( $marker, map ) {
 
                 // var
@@ -137,6 +138,7 @@
              *  @return	n/a
              */
 
+/*
             function center_map( map ) {
 
                 // vars
@@ -179,6 +181,7 @@
              *  @return	n/a
              */
 // global var
+            /*
             var map = null;
 
             $(document).ready(function(){

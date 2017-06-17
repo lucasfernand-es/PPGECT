@@ -6,7 +6,7 @@
 
 
     <div class="slider-slides main feature-images">
-        <div class="slide slide-center light" style="background-image: url(&quot;<?php echo get_field('banner', 'option')['url']; ?>&quot;);">
+        <div class="slide slide-center light" style="background-image: url(&quot;<?php echo get_field('homeBanner', 'option')['url']; ?>&quot;);">
             <div class="slide-body">
                 <div class="container">
                     <div class="slide-caption">
@@ -22,17 +22,15 @@
 
     <div id="main" class="main">
 
-        <?php echo '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=[AIzaSyDngp_jP8nhYJlXggT7WKsY-YtuxFa2MQ4]"></script>'; ?>
-
         <div class="container">
-            <div class="section-heading features-heading">
-                <div class="section-title features-title heading">
-                    <?php the_field('display_sobre_nos', 'option'); ?>
+            <div class="section-heading">
+                <div class="">
+                    <?php the_field('displayContentTitle', 'option'); ?>
                 </div>
             </div>
             <div class="container">
 
-                <?php the_field('sobre_nos', 'option'); ?>
+                <?php the_field('homeContent', 'option'); ?>
 
             </div>
         </div>
@@ -49,7 +47,7 @@
         <div class="container rg-heading">
             <div class="section-heading">
                 <div class="section-title team-title">
-                    <?php the_field('displayResearchGroup', 'option'); ?>
+                    <?php the_field('displayResearchGroup', 'option');?>
                 </div>
             </div>
 
@@ -62,7 +60,9 @@
             ));
             // 'orderby' => 'abreviacao',
             if( $posts ): ?>
-                <?php cpotheme_grid($posts, 'element', 'research-group-item', 3, array('class' => 'column-fit')); ?>
+                <?php
+                    $groupRow = (int) get_field('researchGroupTotalByRow', 'option');
+                    cpotheme_grid($posts, 'element', 'research-group-item', $groupRow, array('class' => 'column-fit')); ?>
                 <?php wp_reset_postdata(); ?>
                 <?php
             else:
@@ -71,7 +71,7 @@
                 <div class="row">
                     <div class="column column-fit col1 no-result">
                         <h2 class="">
-                            <?php the_field('display_no_gp', 'option'); ?>
+                            <?php the_field('displayNoResearchGroup', 'option'); ?>
                         </h2>
                     </div>
                 </div>

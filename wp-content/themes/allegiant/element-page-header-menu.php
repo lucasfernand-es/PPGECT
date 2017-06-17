@@ -20,13 +20,13 @@
         <?php
             foreach( $posts as $post ):
             setup_postdata( $post ); ?>
-                <li class="menu-item menu-item-type-post_type menu-item-object-research_group  top-menu-item"><a href="<?php the_permalink(); ?>"> <?php echo get_field("nome"); ?></a></li>
+                <li class="menu-item menu-item-type-post_type menu-item-object-research_group  top-menu-item"><a href="<?php the_permalink(); ?>"> <?php echo get_field("name"); ?></a></li>
             <?php endforeach; ?>
     </ul>
     <?php endif; ?>
 </li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page  top-menu-item">
+<!--li class="menu-item menu-item-type-post_type menu-item-object-page  top-menu-item">
     <a href="<?php ?>">
         <?php the_field('displayContact', 'option'); ?>
     </a>
-</li>
+</li-->
